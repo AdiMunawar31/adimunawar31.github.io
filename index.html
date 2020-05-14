@@ -1,31 +1,3 @@
-<?php
-
-function get_Curl($url)
-{
-  $curl = curl_init();
-  curl_setopt($curl, CURLOPT_URL, $url);
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-  $result = curl_exec($curl);
-  curl_close($curl);
-
-  return json_decode($result, true);
-}
-
-$result = get_Curl('https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=UCx7GJoa9DAyngsmAQJ_uGLA&key=AIzaSyBdQXqeJRdFl93PLoSN3SzDhz4adaiv3zE');
-
-$youtubeProfilePic = $result['items'][0]['snippet']['thumbnails']['medium']['url'];
-$namaChannel = $result['items'][0]['snippet']['title'];
-$bio = $result['items'][0]['snippet']['description'];
-$subscriber = $result['items'][0]['statistics']['subscriberCount'];
-
-// latest video
-$videoId = 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyBdQXqeJRdFl93PLoSN3SzDhz4adaiv3zE&channelId=UCx7GJoa9DAyngsmAQJ_uGLA&maxResults=1&order=viewCount';
-$result = get_Curl($videoId);
-
-$latestVideo = $result['items'][0]['id']['videoId'];
-
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -106,7 +78,7 @@ $latestVideo = $result['items'][0]['id']['videoId'];
         <div class="col s12 m6">
           <div class="row">
             <div class="col m4">
-              <img src="ig/5.jpg" class="responsive-img circle z-depth-3">
+              <img src="ig/5.jpg" class="responsive-img circle z-depth-3 ">
             </div>
             <div class="col m8">
               <h5>D2Y CHANNEL</h5>
